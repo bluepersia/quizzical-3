@@ -29,6 +29,9 @@
 .answer--active {
   cursor: pointer;
 }
+.answer--active.answer--chosen {
+  background-color: var(--color-8);
+}
 
 .answer--active:hover,
 .answer--active:focus {
