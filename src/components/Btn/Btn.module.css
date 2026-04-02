@@ -1,0 +1,22 @@
+.btn {
+  border: none;
+  background-color: var(--color-7);
+  color: var(--color-1);
+  font-family: inherit;
+  font-weight: var(--fw-200);
+  cursor: pointer;
+  transition:
+    background-color 300ms,
+    color 300ms;
+}
+
+.btn--large {
+  border-radius: var(--br-300);
+  padding: 1rem 3rem; /* SPACING */
+}
+
+.btn:hover,
+.btn:focus {
+  background-color: var(--color-8);
+  color: var(--color-9);
+}
