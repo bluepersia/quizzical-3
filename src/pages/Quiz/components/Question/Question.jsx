@@ -38,7 +38,7 @@ export default function Question({
                 className={`${styles["answer"]} ${cls}`}
                 aria-pressed={answer === chosen_answer}
               >
-                {answer}
+                {he.decode(answer)}
               </button>
             </li>
           );
