@@ -24,23 +24,34 @@ export default function Quiz() {
       return;
     }
 
-    fetch("https://opentdb.com/api.php?amount=5")
-      .then((res) => res.json())
-      .then((data) => {
-        if (!data.results) return;
-        console.log(data.results);
-        setQuizData(
-          data.results.map((questionData, index) => ({
-            index,
-            ...questionData,
-            chosen_answer: "",
-            answers: shuffleArray([
-              questionData.correct_answer,
-              ...questionData.incorrect_answers,
-            ]),
-          })),
-        );
-      });
+    tryFetch();
+
+    function tryFetch() {
+      fetch("https://opentdb.com/api.php?amount=5")
+        .then((res) => {
+          if (res.status === 429) {
+            throw new Error("RATE_LIMIT");
+          }
+          return res.json();
+        })
+        .then((data) => {
+          if (!data.results) return;
+          setQuizData(
+            data.results.map((questionData, index) => ({
+              index,
+              ...questionData,
+              chosen_answer: "",
+              answers: shuffleArray([
+                questionData.correct_answer,
+                ...questionData.incorrect_answers,
+              ]),
+            })),
+          );
+        })
+        .catch(() => {
+          setTimeout(tryFetch, 2000);
+        });
+    }
   }, [isEnded]);
 
   return (
