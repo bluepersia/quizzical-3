@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import styles from "./Quiz.module.css";
 import Btn from "../../components/Btn/Btn";
 import Question from "./components/Question/Question";
@@ -7,6 +7,8 @@ import { calculateScore, chooseAnswer, shuffleArray } from "./utils";
 export default function Quiz() {
   const [isEnded, setIsEnded] = useState(false);
   const [quizData, setQuizData] = useState(null);
+  const quizDataPrev = useRef(null);
+  const firstQuestionRef = useRef(null);
 
   function toggleGame() {
     setIsEnded((prev) => !prev);
@@ -54,14 +56,22 @@ export default function Quiz() {
     }
   }, [isEnded]);
 
+  useEffect(() => {
+    if (quizData && quizDataPrev.current === null) {
+      firstQuestionRef.current.focus();
+    }
+    quizDataPrev.current = quizData;
+  }, [quizData]);
+
   return (
     <>
       <section className={styles.quiz}>
         <h2 className="sr-only">Questions</h2>
         <ul className="reset-list">
-          {quizData?.map((questionData) => (
+          {quizData?.map((questionData, index) => (
             <li key={questionData.question}>
               <Question
+                firstQuestionRef={index === 0 ? firstQuestionRef : null}
                 {...questionData}
                 isGameActive={!isEnded}
                 chooseAnswer={handleChooseAnswer}

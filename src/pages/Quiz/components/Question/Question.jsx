@@ -9,9 +9,10 @@ export default function Question({
   chosen_answer,
   isGameActive,
   chooseAnswer,
+  firstQuestionRef,
 }) {
   return (
-    <div className={styles.question}>
+    <div className={styles.question} ref={firstQuestionRef} tabIndex={-1}>
       <h3 className={styles.title}>{he.decode(question)}</h3>
       <ul className={`${styles.answers} reset-list`}>
         {answers.map((answer) => {
@@ -35,6 +36,7 @@ export default function Question({
               <button
                 onClick={() => chooseAnswer(index, answer)}
                 className={`${styles["answer"]} ${cls}`}
+                aria-pressed={answer === chosen_answer}
               >
                 {answer}
               </button>
