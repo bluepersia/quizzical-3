@@ -1,3 +1,5 @@
+import styles from "./Main.module.css";
+
 export default function Main({ children }) {
-  return <main>{children}</main>;
+  return <main className={styles.main}>{children}</main>;
 }
