@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, memo } from "react";
 import styles from "./Quiz.module.css";
 import Btn from "../../components/Btn/Btn";
 import Question from "./components/Question/Question";
@@ -70,12 +70,14 @@ export default function Quiz() {
         <ul className="reset-list">
           {quizData?.map((questionData, index) => (
             <li key={questionData.question}>
-              <Question
-                firstQuestionRef={index === 0 ? firstQuestionRef : null}
-                {...questionData}
-                isGameActive={!isEnded}
-                chooseAnswer={handleChooseAnswer}
-              />
+              {memo(
+                <Question
+                  firstQuestionRef={index === 0 ? firstQuestionRef : null}
+                  {...questionData}
+                  isGameActive={!isEnded}
+                  chooseAnswer={handleChooseAnswer}
+                />,
+              )}
             </li>
           ))}
         </ul>
