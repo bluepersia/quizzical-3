@@ -1,3 +1,4 @@
+import styles from "./Quiz.module.css";
 import Btn from "../../components/Btn/Btn";
 import Question from "./components/Question";
 
@@ -28,7 +29,7 @@ export default function Quiz() {
           </li>
         </ul>
       </section>
-      <section>
+      <section className={styles.results}>
         <h2 className="sr-only">Results</h2>
         <Btn variant="mid">Check answers</Btn>
       </section>
