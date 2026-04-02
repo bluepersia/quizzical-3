@@ -1,3 +1,4 @@
+import Btn from "../../../../components/Btn/Btn";
 import styles from "./Intro.module.css";
 
 export default function Intro() {
@@ -7,7 +8,7 @@ export default function Intro() {
       <p className={styles.description}>
         Test your knowledge with quick, fun quizzes.
       </p>
-      <button className={styles.button}>Start Quiz</button>
+      <Btn variant="large">Start Quiz</Btn>
     </div>
   );
 }
