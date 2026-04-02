@@ -6,7 +6,7 @@ export default function Quiz() {
     <>
       <section>
         <h2 className="sr-only">Questions</h2>
-        <ul>
+        <ul className="reset-list">
           <li>
             <Question />
           </li>
