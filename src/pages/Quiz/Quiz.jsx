@@ -5,7 +5,7 @@ import Question from "./components/Question";
 export default function Quiz() {
   return (
     <>
-      <section>
+      <section className={styles.quiz}>
         <h2 className="sr-only">Questions</h2>
         <ul className="reset-list">
           <li>
@@ -31,7 +31,8 @@ export default function Quiz() {
       </section>
       <section className={styles.results}>
         <h2 className="sr-only">Results</h2>
-        <Btn variant="mid">Check answers</Btn>
+        <p className={styles.score}>You scored 3/5 correct answers</p>
+        <Btn variant="mid">Play again</Btn>
       </section>
     </>
   );
