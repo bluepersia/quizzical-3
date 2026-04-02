@@ -82,17 +82,22 @@ export default function Quiz() {
       </section>
       <section className={styles.results}>
         <h2 className="sr-only">Results</h2>
-        {isEnded ? (
-          <>
-            <p className={styles.score}>
-              You scored {calculateScore(quizData)}/{quizData.length} correct
-              answers
-            </p>
-            <Btn variant="mid" onClick={toggleGame}>
-              Play again
-            </Btn>
-          </>
-        ) : (
+
+        <div className={styles.gameEnded} aria-live="polite">
+          {isEnded && (
+            <>
+              <p className={styles.score}>
+                You scored {calculateScore(quizData)}/{quizData.length} correct
+                answers
+              </p>
+              <Btn variant="mid" onClick={toggleGame}>
+                Play again
+              </Btn>
+            </>
+          )}
+        </div>
+
+        {!isEnded && (
           <Btn variant="mid" onClick={toggleGame}>
             Check answers
           </Btn>
