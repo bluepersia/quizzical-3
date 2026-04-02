@@ -15,6 +15,11 @@
   padding: 1rem 3rem; /* SPACING */
 }
 
+.btn--mid {
+  border-radius: var(--br-200);
+  padding: 0.68rem 1.375rem; /* SPACING */
+}
+
 .btn:hover,
 .btn:focus {
   background-color: var(--color-8);

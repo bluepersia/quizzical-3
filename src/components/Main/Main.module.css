@@ -5,4 +5,5 @@
   justify-content: center;
   min-height: 100vh;
   background-color: var(--color-6);
+  padding: 2rem 0;
 }
