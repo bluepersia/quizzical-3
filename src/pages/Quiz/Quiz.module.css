@@ -8,10 +8,16 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  column-gap: 1.5rem;
 }
 
 .score {
   font-size: var(--fs-200);
   font-weight: var(--fw-400);
+}
+
+.gameEnded {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  column-gap: 1.5rem;
 }
