@@ -1,0 +1,16 @@
+.intro {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.title {
+  font-size: var(--fs-400);
+  font-weight: var(--fw-400);
+  margin-bottom: 0.43rem; /* SPACING */
+}
+
+.description {
+  font-weight: var(--fw-100);
+  margin-bottom: 1.81rem; /* SPACING */
+}
