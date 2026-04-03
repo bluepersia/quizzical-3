@@ -19,13 +19,9 @@ export default function Quiz() {
     });
   }, []);
 
-  const handleChooseAnswer = useCallback(
-    function (index, answer) {
-      if (isEnded) return;
-      setQuizData((prev) => chooseAnswer(prev, index, answer));
-    },
-    [isEnded],
-  );
+  const handleChooseAnswer = useCallback(function (index, answer) {
+    setQuizData((prev) => chooseAnswer(prev, index, answer));
+  }, []);
 
   useEffect(() => {
     if (isEnded) {

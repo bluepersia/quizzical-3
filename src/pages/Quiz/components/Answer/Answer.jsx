@@ -20,6 +20,7 @@ function Answer({
   );
   return (
     <button
+      disabled={!isGameActive}
       onClick={() => chooseAnswer(index, answer)}
       className={`${styles["answer"]} ${cls}`}
       aria-pressed={isSelected}
