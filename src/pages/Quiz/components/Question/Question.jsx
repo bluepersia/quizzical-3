@@ -1,8 +1,9 @@
+import { memo } from "react";
 import he from "he";
 import styles from "./Question.module.css";
 import { computeClass } from "./utils";
 
-export default function Question({
+function Question({
   index,
   question,
   answers,
@@ -40,3 +41,5 @@ export default function Question({
     </div>
   );
 }
+
+export default memo(Question);

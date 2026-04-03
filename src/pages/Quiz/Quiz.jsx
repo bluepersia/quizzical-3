@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, memo } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import styles from "./Quiz.module.css";
 import Btn from "../../components/Btn/Btn";
 import Question from "./components/Question/Question";
@@ -10,16 +10,18 @@ export default function Quiz() {
   const quizDataPrev = useRef(null);
   const firstQuestionRef = useRef(null);
 
-  function toggleGame() {
-    setIsEnded((prev) => !prev);
-    if (isEnded) {
-      setQuizData(null);
-    }
-  }
+  const toggleGame = useCallback(() => {
+    setIsEnded((prev) => {
+      if (prev) {
+        setQuizData(null);
+      }
+      return !prev;
+    });
+  }, []);
 
-  function handleChooseAnswer(index, answer) {
+  const handleChooseAnswer = useCallback(function (index, answer) {
     setQuizData((prev) => chooseAnswer(prev, index, answer));
-  }
+  }, []);
 
   useEffect(() => {
     if (isEnded) {
@@ -70,14 +72,13 @@ export default function Quiz() {
         <ul className="reset-list">
           {quizData?.map((questionData, index) => (
             <li key={questionData.question}>
-              {memo(
-                <Question
-                  firstQuestionRef={index === 0 ? firstQuestionRef : null}
-                  {...questionData}
-                  isGameActive={!isEnded}
-                  chooseAnswer={handleChooseAnswer}
-                />,
-              )}
+              <Question
+                firstQuestionRef={index === 0 ? firstQuestionRef : null}
+                {...questionData}
+                isGameActive={!isEnded}
+                chooseAnswer={handleChooseAnswer}
+              />
+              ,
             </li>
           ))}
         </ul>
