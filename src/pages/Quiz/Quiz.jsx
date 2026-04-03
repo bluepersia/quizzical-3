@@ -78,7 +78,6 @@ export default function Quiz() {
                 isGameActive={!isEnded}
                 chooseAnswer={handleChooseAnswer}
               />
-              ,
             </li>
           ))}
         </ul>
