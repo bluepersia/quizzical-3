@@ -8,9 +8,11 @@
   padding: 0.3rem 1rem; /* SPACING */
   border-radius: var(--br-100);
   transition: background-color 300ms;
+  opacity: 50%;
 }
 
 .answer--active {
+  opacity: 100%;
   cursor: pointer;
 }
 .answer--active.answer--chosen {
@@ -23,12 +25,12 @@
 }
 
 .answer--correct {
+  opacity: 100%;
   background-color: var(--color-4);
   border-color: var(--color-4);
 }
 
 .answer--incorrect {
-  opacity: 50%;
   background-color: var(--color-2);
   border-color: var(--color-2);
 }
