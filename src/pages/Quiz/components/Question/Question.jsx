@@ -1,7 +1,7 @@
 import { memo } from "react";
 import he from "he";
 import styles from "./Question.module.css";
-import { computeClass } from "./utils";
+import Answer from "../Answer/Answer";
 
 function Question({
   index,
@@ -18,22 +18,16 @@ function Question({
       <h3 className={styles.title}>{he.decode(question)}</h3>
       <ul className={`${styles.answers} reset-list`}>
         {answers.map((answer) => {
-          const cls = computeClass(
-            styles,
-            isGameActive,
-            answer,
-            correct_answer,
-            chosen_answer,
-          );
           return (
             <li key={answer} className={styles["answer-item"]}>
-              <button
-                onClick={() => chooseAnswer(index, answer)}
-                className={`${styles["answer"]} ${cls}`}
-                aria-pressed={answer === chosen_answer}
-              >
-                {he.decode(answer)}
-              </button>
+              <Answer
+                index={index}
+                chooseAnswer={chooseAnswer}
+                isGameActive={isGameActive}
+                answer={answer}
+                correct_answer={correct_answer}
+                isSelected={answer === chosen_answer}
+              />
             </li>
           );
         })}
